@@ -20,7 +20,6 @@ $password = $_POST['password'];
 
 // Mã hóa mật khẩu bằng password_hash
 // $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-$password = sha1($_POST['password']); 
 
 // Xử lí thông tin đăng nhập
 $sql = "SELECT * FROM user WHERE TenUser='$username'";
@@ -34,7 +33,7 @@ if ($result->num_rows > 0) {
     if ($row['MatKhau'] == $password) {
         // Đăng nhập thành công, lưu trạng thái vào Session
         $_SESSION["Login"] = true;
-        header("location: dashbord.php"); // Chuyển hướng đến trang dashboard sau khi đăng nhập thành công
+        header("location: dashboard.php"); // Chuyển hướng đến trang dashboard sau khi đăng nhập thành công
     } else  {
         // Mật khẩu không đúng
         echo "<script>alert('Sai mật khẩu'); window.location='login.html?error=invalid_credentials';</script>"; 
